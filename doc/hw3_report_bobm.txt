@@ -1,0 +1,113 @@
+Bob McHenry
+Assignment 3: SudokuModel
+Level: Standard
+
+For the design of the getRowState, getColumnState, and getRegionState methods,
+I used a temporary int array of getSize() length and added the values of the 
+board area to be tested. 
+
+Rows and columns were straight forward. Reg/Ord numbering was a bit trickier. 
+For the getRegionState method, I added local variables to get the starting 
+row, col coordinates of the region and incremented those. 
+
+//init
+int row = n / getColumns() * getRows();
+int col = n % getColumns() * getColumns();
+
+// increment
+col++;
+if (col % getColumns() == 0){
+	col = n % getColumns() * getColumns();
+	row++;
+}
+
+As far as determining State values, while I was populating the area, the 
+loop checked values. If a value was equal to 0, it would immediately return 
+incomplete. 
+
+If no 0's were found, it would pass the array to a second loop to scan for 
+duplicates, returning error if duplicate values were found. 
+
+After that loop, the method returns complete, since there are no 0 values 
+or duplicates. 
+
+I also added test methods using hand created board layouts to confirm proper
+State values. 
+
+public static void controlBoard(){
+    	csc143.sudoku.SudokuModel model = new csc143.sudoku.SudokuModel(3, 3);
+        int size = model.getSize();
+        int[] testVal = {
+        				 1,2,3, 4,5,6, 7,8,9,
+        				 4,5,6, 5,6,7, 8,9,1,
+        				 7,8,9, 6,7,8, 9,1,2,
+        				 
+        				 2,3,6, 7,8,9, 1,2,3,
+        				 5,6,7, 8,0,1, 2,3,4,
+        				 8,9,8, 9,1,2, 3,4,5,
+        				 
+        				 3,1,9, 1,2,3, 4,5,1,
+        				 6,4,1, 2,3,4, 2,3,9,
+        				 9,7,2, 3,4,5, 6,7,8
+        				 };
+        
+        
+        for(int i = 0; i < size * size; i++) {
+        	model.setValue(i / size, i % size, testVal[i]);
+        }
+        System.out.println("Control 3x3 board");
+        System.out.println(model);
+        
+        // report state
+        for(int i = 0; i < size; i++)
+            System.out.println("Row " + i + " state: " + model.getRowState(i));
+        System.out.println();
+        for(int i = 0; i < size; i++)
+            System.out.println("Column " + i + " state: " + model.getColumnState(i));
+        System.out.println();
+        for(int i = 0; i < size; i++)
+            System.out.println("Region " + i + " state: " + model.getRegionState(i));
+        System.out.println();
+    }
+
+/** Test console output
+Control 3x3 board
+1 2 3 4 5 6 7 8 9 
+4 5 6 5 6 7 8 9 1 
+7 8 9 6 7 8 9 1 2 
+2 3 6 7 8 9 1 2 3 
+5 6 7 8 . 1 2 3 4 
+8 9 8 9 1 2 3 4 5 
+3 1 9 1 2 3 4 5 1 
+6 4 1 2 3 4 2 3 9 
+9 7 2 3 4 5 6 7 8 
+
+Row 0 state: COMPLETE
+Row 1 state: ERROR
+Row 2 state: ERROR
+Row 3 state: ERROR
+Row 4 state: INCOMPLETE
+Row 5 state: ERROR
+Row 6 state: ERROR
+Row 7 state: ERROR
+Row 8 state: ERROR
+
+Column 0 state: COMPLETE
+Column 1 state: COMPLETE
+Column 2 state: ERROR
+Column 3 state: COMPLETE
+Column 4 state: INCOMPLETE
+Column 5 state: COMPLETE
+Column 6 state: COMPLETE
+Column 7 state: COMPLETE
+Column 8 state: ERROR
+
+Region 0 state: COMPLETE
+Region 1 state: ERROR
+Region 2 state: ERROR
+Region 3 state: ERROR
+Region 4 state: INCOMPLETE
+Region 5 state: ERROR
+Region 6 state: ERROR
+Region 7 state: ERROR
+Region 8 state: COMPLETE
