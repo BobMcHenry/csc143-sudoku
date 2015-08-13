@@ -2,9 +2,8 @@ package csc143.sudoku;
 
 import java.awt.*;
 import java.awt.Event.*;
-import java.util.*;
-
 import javax.swing.*;
+import java.util.*;
 
 public class SudokuView extends SudokuBoard implements Observer{
 
@@ -19,10 +18,6 @@ public class SudokuView extends SudokuBoard implements Observer{
 		
 	}
 
-	public void setSelected(int i, int j) {
-		// TODO Auto-generated method stub
-		
-	}
 }
 
 class Symbols implements SymbolRenderer{
@@ -33,7 +28,46 @@ class Symbols implements SymbolRenderer{
 	
 	@Override
 	public void drawSymbol(Graphics g, int x, int y, int value) {
+		//  --   --
+		// |  | |  |
+		// |--| |--|
+		// |  | |  |
+		//  --   --
+		
+		// FIRST DIGIT
+		// vertical LCD pipes. 
+		//Left side
 		g.drawLine(x+6, y+8, x+6, y+20);
+		g.drawLine(x+6, y+20, x+6, y+32);
+		//right side
+		g.drawLine(x+14, y+8, x+14, y+20);
+		g.drawLine(x+14, y+20, x+14, y+32);
+		
+		// Horizontal LCD pipes
+		//top
+		g.drawLine(x+8, y+ 8, x+14, y+8);
+		//mid
+		g.drawLine(x+8, y+19, x+14, y+19);
+		//bottom
+		g.drawLine(x+8, y+31, x+14, y+31);
+		
+		//SecondDigit
+		// vertical LCD pipes. 
+		//Left side
+		g.drawLine(x+22, y+ 8, x+22, y+20);
+		g.drawLine(x+22, y+20, x+22, y+32);
+		//right side
+		g.drawLine(x+32, y+ 8, x+32, y+20);
+		g.drawLine(x+32, y+20, x+32, y+32);
+		
+		// Horizontal LCD pipes
+		//top
+		g.drawLine(x+24, y+8, x+32, y+8);
+		//mid
+		g.drawLine(x+24, y+19, x+32, y+19);
+		//bottom
+		g.drawLine(x+24, y+31, x+32, y+31);
+				
 		
 	}
 	

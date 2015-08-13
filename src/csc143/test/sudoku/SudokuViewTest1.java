@@ -11,6 +11,7 @@ public class SudokuViewTest1 {
         twoByThree();
         threeByThree();
         threeByFour();
+
     }
     
     public void twoByTwo() {

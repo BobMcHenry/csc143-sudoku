@@ -12,14 +12,14 @@ import javax.swing.border.*;
  * @author Bob McHenry
  * @version 2015-07-12
  */
-public class SudokuBoard extends JComponent implements SelectedCell{
+public class CopyOfSudokuBoard_v2 extends JComponent implements SelectedCell{
 	// TODO Implement Coordinate Transfer
 	// TODO Fix border spacing
 	// TODO Finetune listeners and setup keyboard control. 
 	
 	// Save reference to Base class provided in constructor
 	SudokuBase base;
-	int size;
+	
 	// Set color constants
 	final Color grey = new Color(220,220,220);
 	final Color white = Color.white;
@@ -54,17 +54,17 @@ public class SudokuBoard extends JComponent implements SelectedCell{
 	 * @param b SudokuBase class that provides the width and height of board as
 	 * well as cell state. 
 	 */
-    public SudokuBoard(SudokuBase b) {
+    public CopyOfSudokuBoard_v2(SudokuBase b) {
     	// Store reference to base object
     	base = b;
-    	size = 50*base.getSize() + 3*(base.getSize() + 1) + 1;
+    	
     	// set board layout and border. 
     	GridLayout board = new GridLayout(base.getColumns(), base.getRows());
     	
     	setLayout(board);
     	
     	setBorder(BorderFactory.createLineBorder(Color.black));
-    	setPreferredSize(new Dimension(size, size));
+    	
     	
     	//Set up regions and add to board. Cells added in Region constructor.
     	regions = new Region[base.getSize()];

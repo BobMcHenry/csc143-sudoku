@@ -1,0 +1,17 @@
+Bob McHenry
+Homework 6: Sudoku View
+Level: Minimal
+
+I have been stumped on this entire section of the program. It's a compound
+stump. 1st part is that I made some poor design choices on the SudokuBoard 
+part of the assignment. Second part was my failure to grasp Graphics/drawing
+concepts. I understand it better now, but my board design doesn't pair nicely
+with my needs for this portion of the assignment. 
+
+For the graphics in the cells, I'm going with an LCD digit display, like a 
+digital clock. I set up all the LCD bars as lines, and will have all cells 
+contain the base shapes, and changing the color of each segment as needed for 
+the different values 1-12. 
+
+Before next weeks assignment, I will have to do a bottom up SudokuBoard
+rewrite to make the visuals work together. 

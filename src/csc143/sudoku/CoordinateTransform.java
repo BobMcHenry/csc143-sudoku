@@ -47,6 +47,7 @@ class RowCol {
      */
     int column;
 
+
 }
 
 /**
@@ -68,5 +69,9 @@ class RegOrd {
      * getter and setter methods for this value.
      */
     int ordinal;
+    
 
 }
+
+
+
