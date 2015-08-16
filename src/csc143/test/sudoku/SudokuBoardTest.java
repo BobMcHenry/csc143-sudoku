@@ -8,7 +8,7 @@ public class SudokuBoardTest implements ActionListener {
     
     JFrame win;
     SudokuBase base;
-    SudokuBoard board;
+    SudokuBoard_v3 board;
     SelectedCell selected;
     JLabel output;
     JLabel error;
@@ -21,9 +21,9 @@ public class SudokuBoardTest implements ActionListener {
     public SudokuBoardTest(int row, int col) {
         String title = row + "x" + col + " Board";
         win = new JFrame(title);
-        win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        base = new SudokuStub(row, col);
-        board = new SudokuBoard(base);
+        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        base = new SudokuModel(row, col);
+        board = new SudokuBoard_v3(base);
         JPanel pnl = new JPanel();
         pnl.add(board);
         pnl.setBackground(java.awt.Color.cyan);
@@ -63,6 +63,7 @@ public class SudokuBoardTest implements ActionListener {
                            selected.getSelectedRow() + ", " +
                            selected.getSelectedColumn());
             error.setText("");
+           // win.repaint();
             
             
             
@@ -79,7 +80,8 @@ public class SudokuBoardTest implements ActionListener {
                 error.setText("Error: " + ex.getMessage());
             }
         }
-        win.pack();
+        win.repaint();
+        //win.pack();
     }
     
     public static void main(String[] args) {

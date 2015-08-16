@@ -16,7 +16,8 @@ public abstract class SudokuCore extends SudokuBase {
     private int getIndex(int row, int col) {
         if(row < 0 || row >= getSize() || col < 0 || col >= getSize()) {
             String msg = "Error in location";
-            throw new IllegalArgumentException(msg);
+            throw new IllegalArgumentException(msg  + " row: " + row + " col: " + col 
+            		+ " Size: " + getSize());
         }
         return row * getSize() + col;
     }

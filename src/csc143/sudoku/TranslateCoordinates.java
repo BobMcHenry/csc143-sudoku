@@ -25,9 +25,9 @@ public class TranslateCoordinates implements CoordinateTransform {
 	public RegOrd toRegOrg(RowCol coord) {
 		RowCol rc = new RowCol();
 		RegOrd ro = new RegOrd();
-		int row = coord.row % base.getRows() * base.getColumns() + colL % base.getColumns();
+		//int row = coord.row % base.getRows() * base.getColumns() + colL % base.getColumns();
 
-		return rc;
+		return ro;
 	}
 
 }

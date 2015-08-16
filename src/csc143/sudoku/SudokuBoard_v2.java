@@ -9,8 +9,8 @@ public class SudokuBoard_v2 extends JComponent implements SelectedCell {
 	SudokuBase base;
 	
 	// Set color constants
-	final Color grey = new Color(220,220,220);
-	final Color white = Color.white;
+	public static final Color grey = new Color(220,220,220);
+	public static final Color white = Color.white;
 	
 	// Selected Cell
 	int selRow;

@@ -95,7 +95,7 @@ public class SudokuViewTest2 {
     
     public static void pause() {
         try {
-            Thread.sleep(500);
+            Thread.sleep(50);
         } catch(InterruptedException e) {
         }
     }

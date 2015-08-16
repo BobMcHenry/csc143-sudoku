@@ -69,8 +69,8 @@ public class SudokuModelTest {
     
     public static void main(String[] args) {
         //randomTest(2,2);
-        //randomTest(2,3);
-        randomTest(3,3);
-    	controlBoard();
+        randomTest(2,3);
+        //randomTest(3,3);
+    	//controlBoard();
     }
 }

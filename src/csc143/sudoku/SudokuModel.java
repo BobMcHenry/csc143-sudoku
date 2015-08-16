@@ -73,7 +73,7 @@ public class SudokuModel extends SudokuCore {
     		}
     	// scan array for duplicate values
     	for (int i = 0; i < tempCol.length; i++){
-    		for (int j = i; j < tempCol.length-i; j++){
+    		for (int j = 0; j < tempCol.length; j++){
     			if (tempCol[i] == tempCol[j] && i != j){
     				return State.ERROR;
     			}
@@ -92,41 +92,47 @@ public class SudokuModel extends SudokuCore {
      */
     public State getRegionState(int n) { 
     	// Calculate row and column from region
-    	int row = n / getColumns() * getRows();
-    	int col = n % getColumns() * getColumns();
-    			
+    	int row = n / getRows() * getRows();
+    	int col = n % getRows() * getColumns();
+    	
+    	
     	// Store row values for evaluation
     	int[] tempReg = new int[getSize()];
     		
     	// i used for array index only. 
     	for (int i = 0; i < tempReg.length;i++ ){
-    	
     		//Check for zero values - mark incomplete if found
     		if (getValue(row , col) == 0){
-    			return State.INCOMPLETE;
-    		}
-    		
+				return State.INCOMPLETE;
+			}
+			
     		// If no zero values, add to array
     		tempReg[i] = getValue(row , col);
     		
-    		// increment col, then check for region bounds. Reset col and 
-    		// increment row when col passes out of region.
-    		col++;
-    		if (col % getColumns() == 0){
-    			col = n % getColumns() * getColumns();
-    			row++;
-    		}
+    		if (col < getSize()) {
+				// increment col, then check for region bounds. Reset col and 
+				// increment row when col passes out of region.
+    			
+    			col++;
+				
+				if (col % getColumns() == 0) {
+					col-= getColumns();
+					row++;
+				}
+			}
     	}
 
     	// scan array for duplicate values
     	for (int i = 0; i < tempReg.length; i++){
-    		for (int j = i; j < tempReg.length-i; j++){
+    		for (int j = 0; j < tempReg.length; j++){
     			if (tempReg[i] == tempReg[j] && i != j){
+
     				return State.ERROR;
     			}
     		}
     	}
     	// If no zero values and no duplicate values
+//    	System.out.println(State.COMPLETE);
         return State.COMPLETE; 
     }    
 }
